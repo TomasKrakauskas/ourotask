@@ -1,0 +1,137 @@
+@import "../../../assets/scss-libraries/colours.scss";
+
+.container-fluid {
+    height: 100vh;
+    background: url('src/assets/images/login-main.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.login-card {
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: $cultured;
+
+    width: 24rem;
+    min-height: 28rem;
+
+    border-radius: 8px;
+
+    .logo {
+        width: 24rem;
+        display: flex;
+        justify-content: center;
+
+        i {
+            background-color: $cultured;
+            border-radius: 50%;
+
+            font-size: 4rem;
+            color: $secondary_colour;
+
+            padding: 2rem;
+            margin-top: -4rem;
+        }
+
+        .logging-in {
+            animation: login-on, ;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            
+        }
+
+    }
+    .notice-board {
+        width: 24rem;
+        display: flex;
+        justify-content: center;
+
+        .wrapper {
+            width: 80%;
+            
+            background-color: rgba($color: $accessory, $alpha: .5);
+            border-radius: 4px;
+
+            padding: .4rem 1rem;
+
+            .wrapper-text {
+
+                color: $secondary_colour;
+                font-weight: 600;
+                font-size: .8rem;
+
+            }
+        }
+        .wrapper-error {
+            width: 80%;
+            
+            background-color: rgba($color: $error, $alpha: .6);
+            border-radius: 4px;
+
+            padding: .4rem 1rem;
+
+            .wrapper-error-text {
+
+                text-align: center;
+
+                color: $darker_white;
+                font-weight: 600;
+                font-size: .8rem;
+
+            }
+        }
+    }
+    .welcome-text {
+        width: 24rem;
+    
+        display: flex;
+        justify-content: center;
+    
+        font-size: 1.5rem;
+        color: $secondary_colour;
+        font-weight: 500;
+    }
+    
+}
+
+.close-screen {
+    position: relative;
+    animation: close;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+.open-screen {
+    position: relative;
+    animation: open;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes login-on {
+    0% {
+        color: $secondary_colour;
+    }
+    50% {
+        color: $main_colour;
+    }
+    100% {
+        color: $secondary_colour;
+    }
+}
+@keyframes open {
+    0% {
+        right: -32rem;
+    }
+    100% {
+        right: 0;
+    }
+}
+@keyframes close {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: -32rem;
+    }
+}

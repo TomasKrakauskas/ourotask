@@ -1,0 +1,65 @@
+<div class="container-fluid d-flex justify-content-center align-items-center">
+    
+    <div class="login-card">
+        
+        <!-- logo -->
+        <div class="logo">
+            <i class="fas fa-power-off" [ngClass]="{'logging-in': sending}"></i>
+        </div>
+
+        <div class="welcome-text">
+            <div *ngIf="loginShow">Welcome back</div>
+            <div *ngIf="registerShow">Welcome to the family</div>
+            <div *ngIf="resetShow">Welcome back</div>
+            <div *ngIf="setShow">Welcome back</div>
+        </div>
+
+        <!-- notice board -->
+        <div class="notice-board" style="margin-top: .5rem;" *ngIf="notice.length > 0">
+            <div class="wrapper">
+                <div class="wrapper-text">
+                    Notice: {{ notice }}
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-grow-1"></div>
+
+        <div style="overflow: hidden;">
+            <!-- login -->
+            <app-login 
+            [ngClass]="{
+                'close-screen': close_animation.login,
+                'open-screen': open_animation.login
+            }"
+            *ngIf="loginShow"
+            ></app-login>
+            <!-- register -->
+            <app-register 
+            [ngClass]="{
+                'close-screen': close_animation.register,
+                'open-screen': open_animation.register
+            }"
+            *ngIf="registerShow"
+            ></app-register>
+            <!-- reset -->
+            <app-reset 
+            [ngClass]="{
+                'close-screen': close_animation.reset,
+                'open-screen': open_animation.reset
+            }"
+            *ngIf="resetShow"
+            ></app-reset>
+            <!-- set -->
+            <app-set 
+            [ngClass]="{
+                'close-screen': close_animation.set,
+                'open-screen': open_animation.set
+            }"
+            *ngIf="setShow"
+            ></app-set>
+        </div>
+
+    </div>
+
+</div>

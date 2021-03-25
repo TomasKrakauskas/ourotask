@@ -1,0 +1,37 @@
+
+<div class="error-board" style="margin-top: .5rem;" *ngIf="error.length > 0">
+    <div class="wrapper-error">
+        <div class="wrapper-error-text">
+            {{ error }}
+        </div>
+    </div>
+</div>
+<div class="success-board" style="margin-top: .5rem;" *ngIf="success.length > 0">
+    <div class="wrapper-success">
+        <div class="wrapper-success-text">
+            {{ success }}
+        </div>
+    </div>
+</div>
+
+<!-- email -->
+<div class="input-box">
+    <input type="text" 
+    class="custom-input" 
+    style="width: 80%;" 
+    [ngClass]="{'invalid-border': error.length > 0 }" 
+    (input)="checkEmail()" 
+    [(ngModel)]="email" 
+    placeholder="E-mail">
+</div>
+
+<!-- button -->
+<div class="button-box" style="margin-top: .75rem;">
+    <button class="custom-button" style="width: 80%;" (click)="reset()">Reset</button>
+</div>
+<!-- footer -->
+<div class="footer-box" style="margin-top: .75rem; margin-bottom: 8rem;">
+    <div class="footer-text" (click)="changePage('login')">
+        Back to login
+    </div>
+</div>

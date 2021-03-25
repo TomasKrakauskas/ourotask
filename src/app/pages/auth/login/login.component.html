@@ -1,0 +1,30 @@
+<div class="error-board" style="margin-top: .5rem;" *ngIf="error.length > 0">
+    <div class="wrapper-error">
+        <div class="wrapper-error-text">
+            {{ error }}
+        </div>
+    </div>
+</div>
+
+<!-- email -->
+<div class="input-box">
+    <input type="text" class="custom-input" style="width: 80%;" (change)="removeError()" [(ngModel)]="email" placeholder="E-mail">
+</div>
+<!-- password -->
+<div class="input-box">
+    <input type="password" class="custom-input" style="width: 80%;" (change)="removeError()" [(ngModel)]="password" placeholder="Password">
+</div>
+
+<!-- button -->
+<div class="button-box" style="margin-top: 1.25rem;">
+    <button class="custom-button" style="width: 8rem;" (click)="login()">Login</button>
+</div>
+<!-- footer -->
+<div class="footer-box" style="margin-top: .75rem; margin-bottom: 4rem;">
+    <div class="footer-text" (click)="changePage('register')">
+        Sign up
+    </div>
+    <div class="footer-text" (click)="changePage('reset')">
+        Forgot password?
+    </div>
+</div>

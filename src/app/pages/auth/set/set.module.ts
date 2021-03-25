@@ -1,19 +1,19 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 
 //components
 import { SetComponent } from "./set.component";
 
 //routing
-import { SetRoutingModule } from "./set-routing.module";
 
 
 @NgModule({
     declarations: [ SetComponent ],
     imports: [
-  
       CommonModule,
-      SetRoutingModule,  
+      FormsModule
     ],
+    exports: [ SetComponent ],
   })
   export class SetModule { }

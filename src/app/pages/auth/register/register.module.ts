@@ -1,19 +1,19 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 
 //components
 import { RegisterComponent } from "./register.component";
 
 //routing
-import { RegisterRoutingModule } from "./register-routing.module";
 
 
 @NgModule({
     declarations: [ RegisterComponent ],
     imports: [
-  
       CommonModule,
-      RegisterRoutingModule,  
+      FormsModule
     ],
+    exports: [ RegisterComponent ],
   })
   export class RegisterModule { }

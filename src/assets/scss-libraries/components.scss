@@ -1,0 +1,61 @@
+@import "./colours.scss";
+
+.custom-input {
+
+    outline: none;
+
+    border: 2px solid $dark;
+    border-radius: 4px;
+
+    width: 100%;
+
+    padding: .4rem .75rem;
+    
+    font-size: 1rem;
+    font-weight: 500;
+    color: $lighter_black;
+
+    transition-duration: .4s;
+
+    &::placeholder {
+        color: $lighter_inactive;
+        font-size: 1rem;
+        font-weight: 700;    
+    }
+    &:hover {
+        border: 2px solid $secondary_colour;
+    }
+    &:focus {
+        border: 2px solid $main_colour;
+    }
+    &:disabled {
+        border: 2px solid $lightest_gray;
+        background-color: $cultured;
+        cursor: default;
+    }
+
+}
+.custom-button {
+    outline: none;
+    background-color: $main_colour;
+
+    border-radius: 4px;
+    border: 2px solid $main_colour;
+
+    color: white;
+    font-weight: 500;
+
+    padding: .25rem .75rem;
+
+    &:hover {
+
+        background-color: white;
+        color: $main_colour;
+
+    }
+    &:active {
+        background-color: white;
+        color: $lighter_black;
+        border: 2px solid $lighter_black;
+    }
+}

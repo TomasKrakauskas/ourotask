@@ -1,0 +1,89 @@
+@import "../../../../assets/scss-libraries/colours.scss";
+
+.error-board {
+    width: 24rem;
+    display: flex;
+    justify-content: center;
+    
+    .wrapper-error {
+        width: 80%;
+        
+        background-color: rgba($color: $error, $alpha: .6);
+        border-radius: 4px;
+
+        padding: .4rem 1rem;
+
+        .wrapper-error-text {
+
+            text-align: center;
+
+            color: $darker_white;
+            font-weight: 600;
+            font-size: .8rem;
+
+        }
+    }
+}
+.success-board {
+    width: 24rem;
+    display: flex;
+    justify-content: center;
+    
+    .wrapper-success {
+        width: 80%;
+        
+        background-color: rgba($color: $green_good, $alpha: .6);
+        border-radius: 4px;
+
+        padding: .4rem 1rem;
+
+        .wrapper-success-text {
+
+            text-align: center;
+
+            color: $darker_white;
+            font-weight: 600;
+            font-size: .8rem;
+
+        }
+    }
+}
+.input-box {
+    width: 24rem;
+    display: flex;
+    justify-content: center;
+
+    margin-top: .75rem;
+
+    .invalid-border {
+        border-color: $error;
+    }
+
+}
+.button-box {
+    width: 24rem;
+    display: flex;
+    justify-content: center;
+}
+.footer-box {
+    width: 24rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .footer-text {
+        cursor: pointer;
+        color: $lighter_black;
+        font-weight: 600;
+        font-size: .9rem;
+
+
+        &:hover {
+            color: $secondary_colour;
+        }
+        &:active {
+            color: $main_colour;
+        }
+
+    }
+}

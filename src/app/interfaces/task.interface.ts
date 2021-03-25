@@ -1,5 +1,7 @@
-export interface TaskType {
+export interface Task {
 
+    _id: string,
+    
     sprint_id: string,
     creator_id: string,
     assignee_id: string,

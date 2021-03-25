@@ -13,21 +13,9 @@ const routes: Routes = [
         loadChildren: () => import('./pages/layout/layout.module').then(m => m.LayoutModule)
       },
       {
-        path: 'login',
-        loadChildren: () => import('./pages/auth/login/login.module').then(m => m.LoginModule)
-      },
-      {
-        path: 'register',
-        loadChildren: () => import('./pages/auth/register/register.module').then(m => m.RegisterModule)
-      },
-      {
-        path: 'set',
-        loadChildren: () => import('./pages/auth/set/set.module').then(m => m.SetModule)
-      },
-      {
-        path: 'reset',
-        loadChildren: () => import('./pages/auth/reset/reset.module').then(m => m.ResetModule)
-      },
+        path: 'auth',
+        loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule)
+      }
     ]
   }
 ];

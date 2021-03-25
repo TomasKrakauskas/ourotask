@@ -1,0 +1,66 @@
+<div style="margin-top: 4rem;"></div>
+
+<div class="error-board" style="margin-top: .5rem;" *ngIf="error.length > 0">
+    <div class="wrapper-error">
+        <div class="wrapper-error-text">
+            {{ error }}
+        </div>
+    </div>
+</div>
+
+<!-- alias -->
+<div class="input-box">
+    <input type="text" class="custom-input" [ngClass]="{'invalid-border': invalid[0] }" style="width: 80%;" (change)="removeError(0)" [(ngModel)]="alias" placeholder="Alias">
+</div>
+<!-- email -->
+<div class="input-box">
+    <input type="text" class="custom-input" [ngClass]="{'invalid-border': invalid[1] }" style="width: 80%;" (input)="checkEmail()" [(ngModel)]="email" placeholder="E-mail">
+</div>
+<!-- password -->
+<div class="input-box">
+    <input type="password" class="custom-input" [ngClass]="{'invalid-border': invalid[2] }" style="width: 80%;" (change)="checkPassword()" [(ngModel)]="password" placeholder="Password">
+</div>
+<!-- password criteria -->
+<div class="password-criteria">
+    <div class="wrapper">
+        <div>Password <b>must</b> contain:</div>
+        <div>
+            Atleast 6 characters
+            <i class="fas fa-check-circle ok" *ngIf="criteria1()"></i>
+            <i class="fas fa-times-circle error" *ngIf="!criteria1()"></i>
+        </div>
+        <div>
+            1 Uppercase letter
+            <i class="fas fa-check-circle ok" *ngIf="criteria2()"></i>
+            <i class="fas fa-times-circle error" *ngIf="!criteria2()"></i>
+        </div>
+        <div>
+            1 Lowercase letter
+            <i class="fas fa-check-circle ok" *ngIf="criteria3()"></i>
+            <i class="fas fa-times-circle error" *ngIf="!criteria3()"></i>
+        </div>
+        <div>
+            1 Digit
+            <i class="fas fa-check-circle ok" *ngIf="criteria4()"></i>
+            <i class="fas fa-times-circle error" *ngIf="!criteria4()"></i>
+        </div>
+    </div>
+</div>
+<!-- confirm password -->
+<div class="input-box">
+    <input type="password" class="custom-input" [ngClass]="{'invalid-border': invalid[3] }" style="width: 80%;" (change)="checkPassword()" [(ngModel)]="confirm_password" placeholder="Confirm password">
+</div>
+
+<!-- button -->
+<div class="button-box" style="margin-top: 1.25rem;">
+    <button class="custom-button" style="width: 8rem;" (click)="register()">Register</button>
+</div>
+<!-- footer -->
+<div class="footer-box" style="margin-top: .75rem; margin-bottom: 4rem;">
+    <div class="footer-text" (click)="changePage('login')">
+        Back to login
+    </div>
+    <div class="footer-text" (click)="changePage('reset')">
+        Forgot password?
+    </div>
+</div>
