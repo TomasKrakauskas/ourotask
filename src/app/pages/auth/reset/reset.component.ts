@@ -25,10 +25,10 @@ export class ResetComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.requestResetSubscription = this.authService.requestResetSubject.subscribe({
             next: (res) => {
+                clearTimeout(this.resetTimer);
+                this.authObserver.sending(false);
                 if(!res.error) {
-                    this.success = 'Email has been sent! You will shortly be redirected';
-                    clearTimeout(this.resetTimer);
-                    this.authObserver.sending(false);
+                    this.success = 'Email has been sent! You will shortly be redirected';    
 
                     setTimeout(() => {
                         //add email & token
@@ -37,8 +37,6 @@ export class ResetComponent implements OnInit, OnDestroy {
                 } else {
                     switch(res.status) {
                         case 500:
-                            clearTimeout(this.resetTimer);
-                            this.authObserver.sending(false);
                             this.error = 'Something went wrong, try again later!';
                             break;
                     }

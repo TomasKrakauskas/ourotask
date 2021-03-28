@@ -9,11 +9,12 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                //projects
+                pathMatch: 'prefix',
+                loadChildren: () => import('../projects/all/projects.module').then(m => m.ProjectsModule)
             },
             {
                 path: 'project',
-                //single view
+                loadChildren: () => import('../projects/single/project.module').then(m => m.ProjectModule)
             },
         ]
     }

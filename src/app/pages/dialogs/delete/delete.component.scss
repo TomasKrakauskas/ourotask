@@ -1,0 +1,113 @@
+@import "../../../../assets/scss-libraries/colours.scss";
+
+.custom-card {
+    border: 2px solid rgba($color: $border, $alpha: .4);
+    
+    .card-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 2.5rem 1.5rem;
+        padding-bottom: 1.5rem;
+
+        .icon-encircle {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 10rem;
+            height: 10rem;
+            
+            
+            border: .25rem solid $cancelled;
+            border-radius: 50%;
+            padding: 2rem;
+        }
+    }
+    
+    .card-inner {
+        border: none;
+        padding: 1.5rem 1.5rem;
+        padding-bottom: 3.5rem; 
+
+        text-align: center;
+    }
+    .delete-action {
+        
+        border-top: 2px solid rgba($color: $border, $alpha: .4);
+        background-color: rgba($color: $border, $alpha: .7);
+        cursor: pointer;
+        width: 100%;
+
+        .delete {
+            width: 100%;
+            height: 100%;
+
+            padding: 2rem 0;
+
+            font-weight: 500;
+            font-size: 1.25rem;
+
+            color: $cancelled;
+            background-color: #fff8f8;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transition-duration: .4s;
+
+            &:hover {
+                background-color: $cancelled;
+                color: white;
+                font-weight: 700;
+                letter-spacing: .05rem;
+            }
+
+        }
+        .cancel {
+
+            padding: 2rem 0;
+
+            font-weight: 600;
+            font-size: 1.25rem;
+
+            color: $dark;
+            background-color: transparent;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transition-duration: .4s;
+
+            &:hover {
+                background-color: $inactive;
+                color: white;
+                font-weight: 700;
+                letter-spacing: .05rem;
+            }
+        }
+    }
+    
+}
+
+.icon-encircle {
+    i {
+        color: $cancelled;
+        font-size: 4rem;
+    }
+}
+.card-inner {
+    .header-text {
+        color: $lighter_black;
+        font-size: 2.25rem;
+        font-weight: 700;
+    }
+    .simple-text {
+        color: $inactive;
+        font-size: 1.25rem;
+    }
+}

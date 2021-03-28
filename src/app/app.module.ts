@@ -16,7 +16,6 @@ import { StandardInterceptor } from './interceptors/interceptor';
 
 //services
 import { AuthService } from './services/auth.service';
-import { AuthObserver } from './obeservers/auth.oberserver';
 
 @NgModule({
   declarations: [
@@ -39,9 +38,6 @@ import { AuthObserver } from './obeservers/auth.oberserver';
 
     //services
     AuthService,
-
-    //observers
-    AuthObserver
 
   ],
   bootstrap: [AppComponent]

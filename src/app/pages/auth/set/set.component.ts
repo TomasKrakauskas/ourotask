@@ -40,9 +40,9 @@ export class SetComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.resetPasswordSubscription = this.authService.resetSubject.subscribe({
             next: (res) => {
+                clearTimeout(this.setTimer);
+                this.authObserver.sending(false);
                 if(!res.error) {
-                    clearTimeout(this.setTimer);
-                    this.authObserver.sending(false);
                     console.log('success');
                     console.log(res);
                     
@@ -51,21 +51,15 @@ export class SetComponent implements OnInit, OnDestroy {
                 } else {
                     switch(res.status) {
                         case 400:
-                            clearTimeout(this.setTimer);
-                            this.authObserver.sending(false);
                             this.error = 'All fields must be filled!'
                             break;
                         case 401:
-                            clearTimeout(this.setTimer);
-                            this.authObserver.sending(false);
                             this.error = 'Invalid or expired token. You will be redirected shortly!';
                             setTimeout(() => {
                                 this.router.navigate(['/auth'], { queryParams: { page: 'login' }});
                             }, 3 * 1000);
                             break;
                         case 500:
-                            clearTimeout(this.setTimer);
-                            this.authObserver.sending(false);
                             this.error = 'Something went wrong. Try again later!'
                             break;
                     }

@@ -1,0 +1,87 @@
+<div class="container-fluid">
+    <div class="background"></div><!-- pass background image url and y position -->
+    <!-- header -->
+    <div class="section-title" *ngIf="favorites.length > 0">
+        Favorite
+    </div>
+    <!-- content -->
+    <div class="row no-gutters">
+        <div class="col-xl-2 col-lg-3 col-md-6 col-12 board-wrapper" *ngFor="let fav of favorites; let i = index">
+            <div class="board-body shadow">
+                <div class="board-title">
+                    {{ fav.title }}
+                </div>
+                <div class="flex-grow-1"></div>
+                <div class="board-footer">
+                    <div class="board-counter shadow-sm">
+                        {{ fav.counter_appendice | uppercase }}-{{ fav.counter | number: '0.0-0' }}
+                    </div>
+                    <div class="board-action shadow-sm" (click)="update('FAVORITE', false, i)">
+                        <i class="far fa-star inactive favorite"></i>
+                        <i class="fas fa-star active favorite"></i>
+                    </div>
+
+                    <div class="flex-grow-1"></div>
+                    
+                    <div class="board-action shadow-sm">
+                        <i class="far fa-edit" style="margin-right: -.25rem;"></i>
+                    </div>
+                    <div class="board-action shadow-sm" (click)="delete(i, 'FAVORITE')">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                    
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
+    <!-- header -->
+    <div class="section-title">
+        Projects
+    </div>
+    <!-- content -->
+    <div class="row no-gutters">
+        <!-- adder -->
+        <div class="col-xl-2 col-lg-3 col-md-6 col-12 adder-wrapper">
+            <div class="adder-body" (click)="create()">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+        <!-- cards -->
+        <div class="col-xl-2 col-lg-3 col-md-6 col-12 board-wrapper" *ngFor="let nonfav of nonFavorites; let i = index">
+            <div class="board-body shadow">
+                <div class="board-title">
+                    {{ nonfav.title }}
+                </div>
+                <div class="flex-grow-1"></div>
+                <div class="board-footer">
+                    <div class="board-counter shadow-sm">
+                        {{ nonfav.counter_appendice | uppercase }}-{{nonfav.counter | number: '0.0-0' }}
+                    </div>
+                    <div class="board-action shadow-sm" (click)="update('NON-FAVORITE', true, i)">
+                        <i class="far fa-star active"></i>
+                        <i class="fas fa-star inactive"></i>
+                    </div>
+
+                    <div class="flex-grow-1"></div>
+                    
+                    <div class="board-action shadow-sm">
+                        <i class="far fa-edit" style="margin-right: -.25rem;"></i>
+                    </div>
+                    <div class="board-action shadow-sm">
+                        <i class="fas fa-trash" (click)="delete(i, 'NON-FAVORITE')"></i>
+                    </div>
+                    
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="custom-dialog" *ngIf="creation_dialog">
+    <app-create-project></app-create-project>
+</div>

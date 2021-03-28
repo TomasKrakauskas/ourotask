@@ -27,9 +27,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.registerSubscription = this.authService.registerSubject.subscribe({
             next: (res) => {
+                this.authObserver.sending(false);
+                clearTimeout(this.registerTimer);
                 if(!res.error) {
-                    this.authObserver.sending(false);
-                    clearTimeout(this.registerTimer);
+                    
                     console.log('success');
                     console.log(res);
 
@@ -38,19 +39,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
                 } else {
                     switch(res.status) {
                         case 400:
-                            this.authObserver.sending(false);
-                            clearTimeout(this.registerTimer);
                             this.error = 'All fields must be filled!';
                             break;
                         case 406:
-                            this.authObserver.sending(false);
-                            clearTimeout(this.registerTimer);
                             this.error = 'Password does not meet criteria!';
                             this.invalid[2] = true;
                             break;
                         case 409:
-                            this.authObserver.sending(false);
-                            clearTimeout(this.registerTimer);
                             this.error = 'Email is taken!';
                             this.invalid[1] = true;
                             break;

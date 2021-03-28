@@ -13,6 +13,9 @@ import { RegisterModule } from "./register/register.module";
 import { ResetModule } from "./reset/reset.module";
 import { SetModule } from "./set/set.module";
 
+//observers
+import { AuthObserver } from "src/app/obeservers/auth.oberserver";
+
 
 @NgModule({
     declarations: [ AuthComponent ],
@@ -26,5 +29,9 @@ import { SetModule } from "./set/set.module";
       ResetModule,
       SetModule
     ],
+    providers: [
+      AuthObserver,
+
+    ]
   })
   export class AuthModule { }

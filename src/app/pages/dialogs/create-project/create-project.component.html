@@ -1,0 +1,41 @@
+<div class="custom-card shadow-lg">
+    <div class="card-image">
+        <div class="d-flex justify-content-end" style="padding: .75rem .75rem 0 0;">
+            <i class="fas fa-times" (click)="cancel()"></i>
+        </div>
+    </div>
+    
+    <div class="card-inner">
+
+        <div class="error-board" *ngIf="error">
+            <div class="wrapper-error">
+                <div class="wrapper-error-text">
+                    {{ error }}
+                </div>
+            </div>
+        </div>
+
+        <div class="title">Title</div>
+        <input type="text" placeholder="Title"
+        (input)="removeError(0)"
+        class="custom-input" 
+        [(ngModel)]="board.title"
+        [ngClass]="{'invalid-border': validator[0] }" >
+
+        <div class="title">Code( 3 letters )</div>
+        <input type="text" placeholder="Code"
+        (input)="removeError(1)"
+        (change)="deleteSurplus()"
+        class="custom-input" 
+        [(ngModel)]="board.counter_appendice"
+        [ngClass]="{'invalid-border': validator[1]}" >
+
+        <div class="title">Description</div>
+        <textarea class="custom-input" [(ngModel)]="board.description" placeholder="Description"></textarea>
+
+    </div>
+
+    <div class="card-action">
+        <button class="custom-button" (click)="create()">Create</button>
+    </div>
+</div>

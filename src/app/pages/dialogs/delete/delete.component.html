@@ -1,0 +1,29 @@
+<div class="custom-card shadow-lg">
+    <div class="card-icon">
+        <div class="icon-encircle">
+            <i class="far fa-trash-alt"></i>
+        </div>
+    </div>
+    
+    <div class="card-inner">
+        <div class="header-text">Are you sure?</div>
+
+        <div class="simple-text " style="padding-top: .75rem;">Do you wish to delete?</div>
+        <div class="simple-text" style="padding-top: .75rem;" *ngIf="item && item.object">[{{ item.object }}]</div>
+    </div>
+
+    <div class="delete-action">
+        <div class="row no-gutters">
+            <div class="col-6">
+                <div class="delete" (click)="yes()">
+                    Delete
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="cancel" (click)="cancel()">
+                    Cancel
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

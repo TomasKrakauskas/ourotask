@@ -9,9 +9,10 @@ import { Board } from "../interfaces/board.interface";
 @Injectable()
 export class BoardService {
 
-    getBoardSubject             = new Subject<any>();
-    getBoardsSubject            = new Subject<any>();
-    getFavoriteBoardsSubject    = new Subject<any>();
+    getBoardSubject                 = new Subject<any>();
+    getBoardsSubject                = new Subject<any>();
+    getFavoriteBoardsSubject        = new Subject<any>();
+    getNonFavoriteBoardsSubject     = new Subject<any>();
     
     postBoardSubject    = new Subject<any>();
     putBoardSubject     = new Subject<any>();
@@ -28,15 +29,21 @@ export class BoardService {
         });
     }
     getBoards(creatorID: string) {
-        this.http.get(environment.key+'boards/all'+creatorID).subscribe({
+        this.http.get(environment.key+'boards/all/'+creatorID).subscribe({
             next: (res) => { this.getBoardsSubject.next(<{ message: string, boards: Array<Board>, count: number }>res); },
             error: (e)  => { this.getBoardsSubject.next(e); }
         });
     }
     getFavoriteBoards(creatorID: string) {
-        this.http.get(environment.key+'boards/all'+creatorID+'/favorite').subscribe({
+        this.http.get(environment.key+'boards/all/'+creatorID+'/favorite').subscribe({
             next: (res) => { this.getFavoriteBoardsSubject.next(<{ message: string, boards: Array<Board>, count: number }>res); },
             error: (e)  => { this.getFavoriteBoardsSubject.next(e); }
+        });
+    }
+    getNonFavoriteBoards(creatorID: string) {
+        this.http.get(environment.key+'boards/all/'+creatorID+'/non-favorite').subscribe({
+            next: (res) => { this.getNonFavoriteBoardsSubject.next(<{ message: string, boards: Array<Board>, count: number }>res); },
+            error: (e)  => { this.getNonFavoriteBoardsSubject.next(e); }
         });
     }
 

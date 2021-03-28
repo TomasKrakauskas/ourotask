@@ -1,7 +1,16 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
+
+//observers
 import { AuthObserver } from "src/app/obeservers/auth.oberserver";
+
+//services
 import { AuthService } from "src/app/services/auth.service";
+
+//interfaces
+import { User } from "src/app/interfaces/user.interface";
+import { Router } from "@angular/router";
+
 
 @Component({
     selector: 'app-login',
@@ -25,7 +34,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     loginSubscription: Subscription;
 
-    constructor(
+    constructor(private router: Router,
         private authService: AuthService,
         private authObserver: AuthObserver) {
     }
@@ -33,23 +42,26 @@ export class LoginComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.loginSubscription = this.authService.loginSubject.subscribe({
             next: (res) => {
+                this.authObserver.sending(false);
                 if(!res.error) {
-                    this.authObserver.sending(false);
+                    //removes animations and 
                     clearTimeout(this.loginTimer);
-                    console.log('success');
-                    console.log(res);
 
+                    //assigns data
+                    this.authService.token = res.token;
+                    this.authService.refresh = res.refresh;
+                    this.authService.user = <User>res.user;
 
+                    //reroutes to landing page
+                    this.router.navigate(['/']);
 
                 } else {
                     switch(res.status) {
                         case 400:
-                            this.authObserver.sending(false);
                             clearTimeout(this.loginTimer);
                             this.error = 'E-mail and password cannot be empty!';
                             break;
                         case 401:
-                            this.authObserver.sending(false);
                             clearTimeout(this.loginTimer);
                             this.error = 'Invalid E-mail or password!';
                             break;
